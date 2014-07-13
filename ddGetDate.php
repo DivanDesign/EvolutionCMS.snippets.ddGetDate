@@ -1,15 +1,15 @@
 <?php
 /** 
  * ddGetDate.php
- * @version 2.1 (2012-03-05)
+ * @version 2.1.1 (2012-03-16)
  * 
- * @desc Выводит дату по заданному формату.
+ * @desc Snippet returns the date in a specified format.
  * 
- * @param date {integer | string} - Дата. Доступные значения: 'now' - текущая дата. По умолчанию: дата публикации, если нет даты публикации, дата создания документа.
- * @param format {string} - Формат, по которому выводить дату. По умолчанию: 'd.m.y'.
- * @param monthToStr {0; 1} - Отображать ли месяц строкой (января, февраля, марта и т.д.), в этом случае месяц в строке format должен быть задан как 'month'. По умолчанию: 0.
- * @param shortFormat {string} - Если задан короткий формат, то выводит дату относительно текущей, в этом случае дата в строке shotFormat должна быть задана как 'short'. По умолчанию: ''.
- * @param lang {ru; en} - Язык названий месяцев. По умолчанию русский.
+ * @param $date {integer | string} - Date. Value 'now' — current date. Default: Pubdate or createdon (if pubdate is empty).
+ * @param $format {string} - Date format to display. Default: 'd.m.y'.
+ * @param $monthToStr {0; 1} - Display month as string. If it's true month in «format» must be specified as 'month'. Default: 0.
+ * @param $shortFormat {string} - Display shorted fromated date. If it's true date in «shortFormat» must be specified as 'short'. Default: ''.
+ * @param $lang {ru; en} - Month names language. Default: 'ru'.
  * 
  * @copyright 2012, DivanDesign
  * http://www.DivanDesign.biz
@@ -28,17 +28,25 @@ if (!is_numeric($date)){
 }
 
 if ($date){
+	if (isset($lang) && $lang == 'en'){
+		$short = array('Day before yesterday', 'Yesterday', 'Today');
+		$monthes = array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
+	}else{
+		$short = array('Позавчера', 'Вчера', 'Сегодня');
+		$monthes = array('января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря');
+	}
+	
 	//Если задан короткий формат и совпадает год с месяцем, то пытаемся его вывести
 	if (isset($shortFormat)){
 		//Если разница времени меньше чем в один день, то добавляем "Сегодня"
 		if (time() - date($date) < 86400){
-			return date(str_replace('short', 'Сегодня', $shortFormat), $date);
+			return date(str_replace('short', $short[2], $shortFormat), $date);
 		//Вчера
 		}else if (time() - date($date) < 172800){
-			return date(str_replace('short', 'Вчера', $shortFormat), $date);
+			return date(str_replace('short', $short[1], $shortFormat), $date);
 		//Позавчера
 		}else if (time() - date($date) < 259200){
-			return date(str_replace('short', 'Позавчера', $shortFormat), $date);
+			return date(str_replace('short', $short[0], $shortFormat), $date);
 		}
 	}
 	
