@@ -1,7 +1,7 @@
 <?php
 /** 
  * ddGetDate.php
- * @version 2.0 (2012-01-23)
+ * @version 2.1 (2012-03-05)
  * 
  * @desc Выводит дату по заданному формату.
  * 
@@ -9,6 +9,7 @@
  * @param format {string} - Формат, по которому выводить дату. По умолчанию: 'd.m.y'.
  * @param monthToStr {0; 1} - Отображать ли месяц строкой (января, февраля, марта и т.д.), в этом случае месяц в строке format должен быть задан как 'month'. По умолчанию: 0.
  * @param shortFormat {string} - Если задан короткий формат, то выводит дату относительно текущей, в этом случае дата в строке shotFormat должна быть задана как 'short'. По умолчанию: ''.
+ * @param lang {ru; en} - Язык названий месяцев. По умолчанию русский.
  * 
  * @copyright 2012, DivanDesign
  * http://www.DivanDesign.biz
@@ -42,7 +43,11 @@ if ($date){
 	}
 	
 	if ($monthToStr){
-		$monthes = array('января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря');
+		if (isset($lang) && $lang == 'en'){
+			$monthes = array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
+		}else{
+			$monthes = array('января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря');
+		}
 		$format = str_replace('month', '\m\o\n\t\h', $format);
 		$result = str_replace('month', $monthes[date('n',$date)-1], date($format, $date));
 	}else{
