@@ -50,11 +50,6 @@ if ($date){
 	}
 	
 	if (isset($monthToStr) && $monthToStr == '1'){
-		if (isset($lang) && $lang == 'en'){
-			$monthes = array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
-		}else{
-			$monthes = array('января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря');
-		}
 		$format = str_replace('month', '\m\o\n\t\h', $format);
 		$result = str_replace('month', $monthes[date('n',$date)-1], date($format, $date));
 	}else{
