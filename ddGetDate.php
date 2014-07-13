@@ -16,7 +16,6 @@
  */
 
 $format = isset($format) ? $format : 'd.m.y';
-$monthToStr = ($monthToStr == '1') ? true : false;
 
 if (!isset($date)){
 	$date = ($modx->documentObject['pub_date']) ? $modx->documentObject['pub_date'] : $modx->documentObject['createdon'];
@@ -50,7 +49,7 @@ if ($date){
 		}
 	}
 	
-	if ($monthToStr){
+	if (isset($monthToStr) && $monthToStr == '1'){
 		if (isset($lang) && $lang == 'en'){
 			$monthes = array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
 		}else{
