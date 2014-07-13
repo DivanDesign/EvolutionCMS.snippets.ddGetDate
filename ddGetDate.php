@@ -1,7 +1,7 @@
 <?php
 /** 
  * ddGetDate.php
- * @version 2.1.1 (2012-03-16)
+ * @version 2.1.2 (2014-07-13)
  * 
  * @desc Snippet returns the date in a specified format.
  * 
@@ -11,7 +11,9 @@
  * @param $shortFormat {string} - Display shorted fromated date. If it's true date in «shortFormat» must be specified as 'short'. Default: ''.
  * @param $lang {ru; en} - Month names language. Default: 'ru'.
  * 
- * @copyright 2012, DivanDesign
+ * @link http://code.divandesign.biz/modx/ddgetdate/2.1.2
+ * 
+ * @copyright 2014, DivanDesign
  * http://www.DivanDesign.biz
  */
 
