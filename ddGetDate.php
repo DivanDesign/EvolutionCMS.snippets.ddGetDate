@@ -1,7 +1,7 @@
 <?php
 /** 
  * ddGetDate.php
- * @version 2.1.1 (2012-03-16)
+ * @version 2.1.2 (2014-07-13)
  * 
  * @desc Snippet returns the date in a specified format.
  * 
@@ -11,12 +11,13 @@
  * @param $shortFormat {string} - Display shorted fromated date. If it's true date in «shortFormat» must be specified as 'short'. Default: ''.
  * @param $lang {ru; en} - Month names language. Default: 'ru'.
  * 
- * @copyright 2012, DivanDesign
+ * @link http://code.divandesign.biz/modx/ddgetdate/2.1.2
+ * 
+ * @copyright 2014, DivanDesign
  * http://www.DivanDesign.biz
  */
 
 $format = isset($format) ? $format : 'd.m.y';
-$monthToStr = ($monthToStr == '1') ? true : false;
 
 if (!isset($date)){
 	$date = ($modx->documentObject['pub_date']) ? $modx->documentObject['pub_date'] : $modx->documentObject['createdon'];
@@ -50,12 +51,7 @@ if ($date){
 		}
 	}
 	
-	if ($monthToStr){
-		if (isset($lang) && $lang == 'en'){
-			$monthes = array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
-		}else{
-			$monthes = array('января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря');
-		}
+	if (isset($monthToStr) && $monthToStr == '1'){
 		$format = str_replace('month', '\m\o\n\t\h', $format);
 		$result = str_replace('month', $monthes[date('n',$date)-1], date($format, $date));
 	}else{
