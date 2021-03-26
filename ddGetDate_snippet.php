@@ -3,13 +3,7 @@
  * ddGetDate.php
  * @version 2.1.2 (2014-07-13)
  * 
- * @desc Snippet returns the date in a specified format.
- * 
- * @param $date {integer | string} - Date. Value 'now' — current date. Default: Pubdate or createdon (if pubdate is empty).
- * @param $format {string} - Date format to display. Default: 'd.m.y'.
- * @param $monthToStr {0; 1} - Display month as string. If it's true month in «format» must be specified as 'month'. Default: 0.
- * @param $shortFormat {string} - Display shorted fromated date. If it's true date in «shortFormat» must be specified as 'short'. Default: ''.
- * @param $lang {ru; en} - Month names language. Default: 'ru'.
+ * @see README.md
  * 
  * @link http://code.divandesign.biz/modx/ddgetdate/2.1.2
  * 
