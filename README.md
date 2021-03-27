@@ -19,13 +19,20 @@ Snippet returns the date in a specified format. It can also:
 
 ### Installation
 
-Elements → Snippets: Create a new snippet with the following data:
+
+#### 1. Elements → Snippets: Create a new snippet with the following data
 
 1. Snippet name: `ddGetDate`.
 2. Description: `<b>2.1.2</b> Snippet returns the date in a specified format.`.
 3. Category: `Core`.
 4. Parse DocBlock: `no`.
 5. Snippet code (php): Insert content of the `ddGetDate_snippet.php` file from the archive.
+
+
+#### 2. Elements → Manage Files
+
+1. Create a new folder `assets/snippets/ddGetDate/`.
+2. Extract the archive to the folder (except `ddGetDate_snippet.php`).
 
 
 ### Parameters description
@@ -125,6 +132,19 @@ Returns:
 
 ```
 Yesterday, 9:48.
+```
+
+
+#### Run the snippet through `\DDTools\Snippet::runSnippet` without DB and eval
+
+```php
+\DDTools\Snippet::runSnippet([
+	'name' => 'ddGetDate',
+	'params' => [
+		'date' => 'now',
+		'format' => 'd.m.Y'
+	]
+]);
 ```
 
 
