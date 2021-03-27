@@ -10,30 +10,38 @@
  * @copyright 2009–2014 DD Group {@link https://DivanDesign.biz }
  */
 
-$format =
-	isset($format) ?
-	$format :
-	'd.m.y'
-;
+//Include (MODX)EvolutionCMS.libraries.ddTools
+require_once(
+	$modx->getConfig('base_path') .
+	'assets/libs/ddTools/modx.ddtools.class.php'
+);
 
-if (!isset($date)){
-	$date =
-		$modx->documentObject['pub_date'] ?
-		$modx->documentObject['pub_date'] :
-		$modx->documentObject['createdon']
-	;
-}
+$params = \DDTools\ObjectTools::extend([
+	'objects' => [
+		//Defaults
+		(object) [
+			'date' =>
+				$modx->documentObject['pub_date'] ?
+				$modx->documentObject['pub_date'] :
+				$modx->documentObject['createdon']
+			,
+			'format' => 'd.m.y',
+			'monthToStr' => false,
+			'shortFormat' => null,
+			'lang' => 'ru'
+		],
+		$params
+	]
+]);
 
 //Если дата не является Unix-меткой
-if (!is_numeric($date)){
-	$date = strtotime($date);
+if (!is_numeric($params->date)){
+	$params->date = strtotime($params->date);
 }
 
-if ($date){
-	if (
-		isset($lang) &&
-		$lang == 'en'
-	){
+
+if ($params->date){
+	if ($params->lang == 'en'){
 		$short = [
 			'Day before yesterday',
 			'Yesterday',
@@ -76,12 +84,12 @@ if ($date){
 	}
 	
 	//Если задан короткий формат и совпадает год с месяцем, то пытаемся его вывести
-	if (isset($shortFormat)){
+	if (!is_null($params->shortFormat)){
 		//Если разница времени меньше чем в один день, то добавляем "Сегодня"
 		if (
 			(
 				time() -
-				date($date)
+				date($params->date)
 			) <
 			86400
 		){
@@ -89,15 +97,15 @@ if ($date){
 				str_replace(
 					'short',
 					$short[2],
-					$shortFormat
+					$params->shortFormat
 				),
-				$date
+				$params->date
 			);
 		//Вчера
 		}else if (
 			(
 				time() -
-				date($date)
+				date($params->date)
 			) <
 			172800
 		){
@@ -105,15 +113,15 @@ if ($date){
 				str_replace(
 					'short',
 					$short[1],
-					$shortFormat
+					$params->shortFormat
 				),
-				$date
+				$params->date
 			);
 		//Позавчера
 		}else if (
 			(
 				time() -
-				date($date)
+				date($params->date)
 			) <
 			259200
 		){
@@ -121,21 +129,18 @@ if ($date){
 				str_replace(
 					'short',
 					$short[0],
-					$shortFormat
+					$params->shortFormat
 				),
-				$date
+				$params->date
 			);
 		}
 	}
 	
-	if (
-		isset($monthToStr) &&
-		$monthToStr == '1'
-	){
-		$format = str_replace(
+	if ($params->monthToStr){
+		$params->format = str_replace(
 			'month',
 			'\m\o\n\t\h',
-			$format
+			$params->format
 		);
 		
 		$result = str_replace(
@@ -143,19 +148,19 @@ if ($date){
 			$monthes[
 				date(
 					'n',
-					$date
+					$params->date
 				) -
 				1
 			],
 			date(
-				$format,
-				$date
+				$params->format,
+				$params->date
 			)
 		);
 	}else{
 		$result = date(
-			$format,
-			$date
+			$params->format,
+			$params->date
 		);
 	}
 	
