@@ -34,12 +34,12 @@ if ($date){
 		isset($lang) &&
 		$lang == 'en'
 	){
-		$short = array(
+		$short = [
 			'Day before yesterday',
 			'Yesterday',
 			'Today'
-		);
-		$monthes = array(
+		];
+		$monthes = [
 			'January',
 			'February',
 			'March',
@@ -52,14 +52,14 @@ if ($date){
 			'October',
 			'November',
 			'December'
-		);
+		];
 	}else{
-		$short = array(
+		$short = [
 			'Позавчера',
 			'Вчера',
 			'Сегодня'
-		);
-		$monthes = array(
+		];
+		$monthes = [
 			'января',
 			'февраля',
 			'марта',
@@ -72,7 +72,7 @@ if ($date){
 			'октября',
 			'ноября',
 			'декабря'
-		);
+		];
 	}
 	
 	//Если задан короткий формат и совпадает год с месяцем, то пытаемся его вывести

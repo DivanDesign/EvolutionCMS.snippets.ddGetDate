@@ -9,6 +9,7 @@ Snippet returns the date in a specified format. It can also:
 
 ## Requires
 
+* PHP >= 5.4
 * [(MODX)EvolutionCMS](https://github.com/evolution-cms/evolution) >= 1.1
 
 
