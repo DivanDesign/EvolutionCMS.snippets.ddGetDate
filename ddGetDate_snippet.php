@@ -96,7 +96,7 @@ if ($params->date){
 			) <
 			86400
 		){
-			return date(
+			$snippetResult = date(
 				str_replace(
 					'short',
 					$short[2],
@@ -112,7 +112,7 @@ if ($params->date){
 			) <
 			172800
 		){
-			return date(
+			$snippetResult = date(
 				str_replace(
 					'short',
 					$short[1],
@@ -128,7 +128,7 @@ if ($params->date){
 			) <
 			259200
 		){
-			return date(
+			$snippetResult = date(
 				str_replace(
 					'short',
 					$short[0],
@@ -136,35 +136,41 @@ if ($params->date){
 				),
 				$params->date
 			);
+		}else{
+			//Флаг, что короткий формат не использовался
+			$params->shortFormat = null;
 		}
 	}
 	
-	if ($params->monthToStr){
-		$params->format = str_replace(
-			'month',
-			'\m\o\n\t\h',
-			$params->format
-		);
-		
-		$snippetResult = str_replace(
-			'month',
-			$monthes[
+	//If short format did not used
+	if (is_null($params->shortFormat)){
+		if ($params->monthToStr){
+			$params->format = str_replace(
+				'month',
+				'\m\o\n\t\h',
+				$params->format
+			);
+			
+			$snippetResult = str_replace(
+				'month',
+				$monthes[
+					date(
+						'n',
+						$params->date
+					) -
+					1
+				],
 				date(
-					'n',
+					$params->format,
 					$params->date
-				) -
-				1
-			],
-			date(
+				)
+			);
+		}else{
+			$snippetResult = date(
 				$params->format,
 				$params->date
-			)
-		);
-	}else{
-		$snippetResult = date(
-			$params->format,
-			$params->date
-		);
+			);
+		}
 	}
 }
 
