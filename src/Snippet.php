@@ -43,7 +43,7 @@ class Snippet extends \DDTools\Snippet {
 	
 	/**
 	 * run
-	 * @version 1.0 (2021-03-27)
+	 * @version 1.0.1 (2021-03-27)
 	 * 
 	 * @return {string}
 	 */
@@ -115,7 +115,7 @@ class Snippet extends \DDTools\Snippet {
 						$this->params->date
 					);
 				//Вчера
-				}else if (
+				}elseif (
 					(
 						time() -
 						date($this->params->date)
@@ -131,7 +131,7 @@ class Snippet extends \DDTools\Snippet {
 						$this->params->date
 					);
 				//Позавчера
-				}else if (
+				}elseif (
 					(
 						time() -
 						date($this->params->date)
