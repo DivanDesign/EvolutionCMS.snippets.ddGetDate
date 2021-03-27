@@ -16,6 +16,9 @@ require_once(
 	'assets/libs/ddTools/modx.ddtools.class.php'
 );
 
+//The snippet must return an empty string even if result is absent
+$snippetResult = '';
+
 $params = \DDTools\ObjectTools::extend([
 	'objects' => [
 		//Defaults
@@ -143,7 +146,7 @@ if ($params->date){
 			$params->format
 		);
 		
-		$result = str_replace(
+		$snippetResult = str_replace(
 			'month',
 			$monthes[
 				date(
@@ -158,12 +161,12 @@ if ($params->date){
 			)
 		);
 	}else{
-		$result = date(
+		$snippetResult = date(
 			$params->format,
 			$params->date
 		);
 	}
-	
-	return $result;
 }
+
+return $snippetResult;
 ?>
