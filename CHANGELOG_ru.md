@@ -1,6 +1,18 @@
 # (MODX)EvolutionCMS.snippets.ddGetDate changelog
 
 
+## Версия 2.2 (2021-04-07)
+* \* Внимание! Требуется PHP >= 5.6.
+* \* Внимание! Требуется (MODX)EvolutionCMS.libraries.ddTools >= 0.48.
+* \+ Запустить сниппет без DB и eval можно через `\DDTools\Snippet::runSnippet` (см. примеры в README).
+* \+ `\ddGetDate\Snippet`: Новый класс. Весь код сниппета перенесён туда.
+* \+ README.
+* \+ README_ru.
+* \+ CHANGELOG.
+* \+ CHANGELOG_ru.
+* \+ Composer.json.
+
+
 ## Версия 2.1.2 (2014-07-13)
 * \* Исправлена ошибка с обращением к не объявленным переменным (PHP 5.3).
 * \* Удалён избыточный код.

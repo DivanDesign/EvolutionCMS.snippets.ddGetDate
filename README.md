@@ -23,7 +23,7 @@ Snippet returns the date in a specified format. It can also:
 #### 1. Elements → Snippets: Create a new snippet with the following data
 
 1. Snippet name: `ddGetDate`.
-2. Description: `<b>2.1.2</b> Snippet returns the date in a specified format.`.
+2. Description: `<b>2.2</b> Snippet returns the date in a specified format.`.
 3. Category: `Core`.
 4. Parse DocBlock: `no`.
 5. Snippet code (php): Insert content of the `ddGetDate_snippet.php` file from the archive.

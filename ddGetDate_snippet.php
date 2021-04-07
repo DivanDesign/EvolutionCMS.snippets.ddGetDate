@@ -1,13 +1,13 @@
 <?php
 /** 
  * ddGetDate
- * @version 2.1.2 (2014-07-13)
+ * @version 2.2 (2021-04-07)
  * 
  * @see README.md
  * 
  * @link https://code.divandesign.biz/modx/ddgetdate
  * 
- * @copyright 2009–2014 DD Group {@link https://DivanDesign.biz }
+ * @copyright 2009–2021 DD Group {@link https://DivanDesign.biz }
  */
 
 //Include (MODX)EvolutionCMS.libraries.ddTools

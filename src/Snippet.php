@@ -3,7 +3,7 @@ namespace ddGetDate;
 
 class Snippet extends \DDTools\Snippet {
 	protected
-		$version = '2.1.2',
+		$version = '2.2.0',
 		
 		$params = [
 			//Defaults
