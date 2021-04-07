@@ -1,0 +1,40 @@
+{
+	"name": "dd/evolutioncms-snippets-ddgetdate",
+	"type": "modxevo-snippet",
+	"version": "2.2.0",
+	"description": "Snippet returns the date in a specified format.",
+	"keywords": [
+		"modx",
+		"modx evo",
+		"modx evolution",
+		"evo",
+		"evo cms",
+		"evolutioncms",
+		"evolution cms",
+		"dd group",
+		"dd studio",
+		"divandesign",
+		"ddgetdate",
+		"date",
+		"date format"
+	],
+	"homepage": "https://code.divandesign.biz/modx/ddgetdate",
+	"authors": [
+		{
+			"name": "DD Group",
+			"email": "code@DivanDesign.biz",
+			"homepage": "https://code.divandesign.biz",
+			"role": "Owner"
+		},
+		{
+			"name": "Ilyas Ronef",
+			"email": "ilyas@DivanDesign.ru",
+			"homepage": "https://ronef.ru",
+			"role": "Developer"
+		}
+	],
+	"require": {
+		"php": ">=5.6.0",
+		"dd/evolutioncms-libraries-ddtools": ">=0.48.0"
+	}
+}
