@@ -6,7 +6,7 @@ class Snippet extends \DDTools\Snippet {
 		$version = '2.2.0',
 		
 		$params = [
-			//Defaults
+			// Defaults
 			'date' => null,
 			'format' => 'd.m.y',
 			'monthToStr' => false,
@@ -17,14 +17,14 @@ class Snippet extends \DDTools\Snippet {
 	
 	/**
 	 * prepareParams
-	 * @version 1.0 (2021-03-27)
+	 * @version 1.0.1 (2024-08-06)
 	 * 
 	 * @param $this->params {stdClass|arrayAssociative|stringJsonObject|stringQueryFormatted}
 	 * 
 	 * @return {void}
 	 */
 	protected function prepareParams($params = []){
-		//Call base method
+		// Call base method
 		parent::prepareParams($params);
 		
 		if (is_null($this->params->date)){
@@ -35,7 +35,7 @@ class Snippet extends \DDTools\Snippet {
 			;
 		}
 		
-		//Если дата не является Unix-меткой
+		// Если дата не является Unix-меткой
 		if (!is_numeric($this->params->date)){
 			$this->params->date = strtotime($this->params->date);
 		}
@@ -43,12 +43,12 @@ class Snippet extends \DDTools\Snippet {
 	
 	/**
 	 * run
-	 * @version 1.0.1 (2021-03-27)
+	 * @version 1.0.2 (2024-08-06)
 	 * 
 	 * @return {string}
 	 */
 	public function run(){
-		//The snippet must return an empty string even if result is absent
+		// The snippet must return an empty string even if result is absent
 		$result = '';
 		
 		if ($this->params->date){
@@ -96,9 +96,9 @@ class Snippet extends \DDTools\Snippet {
 				];
 			}
 			
-			//Если задан короткий формат и совпадает год с месяцем, то пытаемся его вывести
+			// Если задан короткий формат и совпадает год с месяцем, то пытаемся его вывести
 			if (!is_null($this->params->shortFormat)){
-				//Если разница времени меньше чем в один день, то добавляем "Сегодня"
+				// Если разница времени меньше чем в один день, то добавляем "Сегодня"
 				if (
 					(
 						time() -
@@ -114,7 +114,7 @@ class Snippet extends \DDTools\Snippet {
 						),
 						$this->params->date
 					);
-				//Вчера
+				// Вчера
 				}elseif (
 					(
 						time() -
@@ -130,7 +130,7 @@ class Snippet extends \DDTools\Snippet {
 						),
 						$this->params->date
 					);
-				//Позавчера
+				// Позавчера
 				}elseif (
 					(
 						time() -
@@ -147,12 +147,12 @@ class Snippet extends \DDTools\Snippet {
 						$this->params->date
 					);
 				}else{
-					//Флаг, что короткий формат не использовался
+					// Флаг, что короткий формат не использовался
 					$this->params->shortFormat = null;
 				}
 			}
 			
-			//If short format did not used
+			// If short format did not used
 			if (is_null($this->params->shortFormat)){
 				if ($this->params->monthToStr){
 					$this->params->format = str_replace(
